@@ -1,0 +1,76 @@
+package student;
+
+import java.awt.List;
+import java.util.Iterator;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Login {
+
+	public static void main(String[] args) throws InterruptedException 
+	
+	{
+		System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+		WebDriver wd = new ChromeDriver();
+		wd.get("https://geneo.in/geneo_live/student_login.html");
+		wd.manage().window().maximize();
+		System.out.println("window Maximized");
+		wd.findElement(By.id("login_input_Uname")).sendKeys("etegatul@gmail.com");
+		wd.findElement(By.id("login_input_Pwd")).sendKeys("Geneo@123");
+		wd.findElement(By.xpath("/html/body/div[2]/div/div/form/input")).click();
+		System.out.println("successful Logged in");
+		Thread.sleep(3000);
+		wd.findElement(By.id("update_flag_login")).click();
+		Thread.sleep(8000);
+		wd.findElement(By.xpath("//*[@id='navbar']/ul/li[2]/a/img")).click();
+		wd.findElement(By.xpath("//*[@id='navbar']/ul/li[2]/ul/li[2]/a")).click();
+		
+		Thread.sleep(8000);
+		wd.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[2]/div[1]/div/div[2]/div/button")).click();
+		wd.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[2]/div[1]/div/div[2]/div/ul/li[1]/a")).click();
+		wd.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[2]/div[2]/div/div[2]/div/span/img")).click();
+		wd.findElement(By.className("enable")).click();
+		//===============javascript for landing page check box button click event=========//
+				//WebElement e2 = wd.findElement(By.xpath("//LABEL[@for='remember_land']"));
+				//JavascriptExecutor d2 = (JavascriptExecutor)wd;
+				//d2.executeScript("arguments[0].click();", e2);
+				
+		
+
+		Thread.sleep(3000);
+		//wd.findElement(By.xpath("html/body/div[2]/div[1]/div/div[4]/button")).click();  // Done button
+		//wd.findElement(By.xpath("//BUTTON[@type='button'][text()='DONE']")).click();
+		//===============javascript for Done button click event=========//
+		WebElement e1 = wd.findElement(By.xpath("//BUTTON[@type='button'][text()='DONE']"));
+		JavascriptExecutor d1 = (JavascriptExecutor)wd;
+		d1.executeScript("arguments[0].click();", e1);
+		Thread.sleep(8000);
+		wd.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/div[1]/div[1]/div[1]/div/a/img")).click(); // cover page click event
+		Thread.sleep(5000);
+	/*	java.util.List<WebElement> chapter_names=wd.findElements(By.className("chapt_index_left_space"));    // trying to to show list of chapter names on index page
+		int no = chapter_names.size();
+		System.out.println("total no. of chapters ="+no);
+		
+		for (int i = 0; i<no-1; i++)
+			 
+		{
+ 
+			System.out.println(chapter_names.get(i).getText());
+           
+		}
+		*/
+		java.util.List<WebElement> allLinks = wd.findElements(By.className("chapt_index_left_space"));
+
+		Iterator<WebElement> itr = allLinks.iterator();
+		while(itr.hasNext()) {
+		    System.out.println(itr.next());
+		}
+		
+
+	}
+
+}

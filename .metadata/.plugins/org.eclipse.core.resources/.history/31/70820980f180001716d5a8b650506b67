@@ -1,0 +1,30 @@
+package student_edition;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class login  {
+
+	public static void main(String[] args) throws InterruptedException 
+	{
+	
+		//FirefoxProfile fp =(new ProfilesIni()).getProfile("default");     // use for user authentication pop up
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+		WebDriver wd = new ChromeDriver();
+		
+		wd.get("https://geneo.in/geneo_live/student_login.html"); 
+		wd.findElement(By.id("login_input_Uname")).sendKeys("etegatul@gmail.com"); // for username
+		
+		wd.findElement(By.id("login_input_Pwd")).sendKeys("Geneo@123"); // password
+		Thread.sleep(3000);
+		wd.findElement(By.xpath("/html/body/div[2]/div/div/form/input")).click();  // for login button
+		//Thread.sleep(3000);
+		//wd.findElement(By.id("update_flag_login")).click();  // kill all session button
+		
+		
+		
+	}
+
+}

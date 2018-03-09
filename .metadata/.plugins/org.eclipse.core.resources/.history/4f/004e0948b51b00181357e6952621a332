@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Geneo application"  >
+  <test name="Geneo" >
+    <classes>
+      <class name="student.all_chapter_assessment_test"/>
+    </classes>
+ </test>
+</suite>

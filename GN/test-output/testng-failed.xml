@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Geneo application]">
+  <test name="To Test All Geneo dependent links(failed)">
+    <classes>
+      <class name="student.ExternalUrlStatus">
+        <methods>
+          <include name="ExplorimentsURL"/>
+          <include name="TearDown"/>
+        </methods>
+      </class> <!-- student.ExternalUrlStatus -->
+    </classes>
+  </test> <!-- To Test All Geneo dependent links(failed) -->
+</suite> <!-- Failed suite [Geneo application] -->

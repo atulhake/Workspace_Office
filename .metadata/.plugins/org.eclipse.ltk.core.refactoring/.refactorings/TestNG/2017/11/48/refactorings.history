@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;signupcode.SupportingFiles&apos; to &apos;supportingFiles&apos;&#x0D;&#x0A;- Original project: &apos;TestNG&apos;&#x0D;&#x0A;- Original element: &apos;TestNG/src/signupcode.SupportingFiles&apos;&#x0D;&#x0A;- Renamed element: &apos;TestNG/src/supportingFiles&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;signupcode.SupportingFiles&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;signupcode.SupportingFiles" name="supportingFiles" qualified="false" references="true" stamp="1511761639405" textual="false" version="1.0"/>
+</session>

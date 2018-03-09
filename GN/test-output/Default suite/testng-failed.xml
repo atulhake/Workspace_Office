@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="student.all_chapter_assessment_test">
+        <methods>
+          <include name="NineMathamatics"/>
+          <include name="EightScience"/>
+          <include name="NineScience"/>
+          <include name="TenthhScience"/>
+          <include name="TearDown"/>
+          <include name="tenthMathamatics"/>
+        </methods>
+      </class> <!-- student.all_chapter_assessment_test -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

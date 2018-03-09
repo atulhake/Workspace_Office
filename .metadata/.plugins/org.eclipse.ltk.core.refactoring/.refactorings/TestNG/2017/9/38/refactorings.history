@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;signupcode.signUp&apos; to &apos;signUp_TestNG&apos;&#x0D;&#x0A;- Original project: &apos;TestNG&apos;&#x0D;&#x0A;- Original element: &apos;signupcode.signUp&apos;&#x0D;&#x0A;- Renamed element: &apos;signupcode.signUp_TestNG&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;signUp&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;signupcode{signUp.java[signUp" matchStrategy="1" name="signUp_TestNG" qualified="false" references="true" similarDeclarations="false" stamp="1505820833762" textual="false" version="1.0"/>
+</session>

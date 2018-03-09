@@ -1,0 +1,574 @@
+package student;
+
+import java.util.List;
+
+import javax.lang.model.element.Element;
+
+import library.Utility;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+
+import Helper.browserfactory;
+
+import com.geneo.pages.Login_page;
+import com.geneo.pages.loginToTextPage;
+
+public class all_chapter_assessment_test {
+
+	
+	
+	WebDriver wd;
+	
+	
+	
+	
+	//@Test(priority=1)
+	public void EightScience () throws Exception
+	
+	{
+		wd= browserfactory.StartBrowser("chrome", "https://geneo.in/geneo_live/student_login.aspx");
+		Login_page login =new Login_page(wd);
+		login.LoginToGeneo("etegatul@gmail.com", "Geneo@123");
+	     loginToTextPage textpage = new loginToTextPage(wd);
+	     textpage.select_std_sub(8, "SCIENCE");
+	     
+		        Thread.sleep(5000);
+		        wd.findElement(By.xpath("//*[@id='drpchapters']")).click();  //text page chapter index
+		    //wd.findElement(By.xpath(".//*[@id='drpchapters'][contains(text(),'Science')]")).click();
+		   java.util.List<WebElement> chapter_list =wd.findElements(By.xpath(".//*[@class='LoadChpater']"));
+		    int no = chapter_list.size();
+		    System.out.println("total numbers of chapters = "+no);
+		    System.out.println("");
+	        System.out.println("");
+		    for (WebElement myValue1 : chapter_list)                      // for loop for chapters click event from text page chapters index
+		    {
+		       
+					System.out.println("chapter name = "+myValue1.getText());
+					Thread.sleep(250);
+					myValue1.click();
+					for(int t=0;t<4;t++)   //for right arrow click event of right panel
+					   {
+						   wd.findElement(By.cssSelector("#rightArrow")).click();
+					   }
+					   System.out.println("Assessment tab displayed"); // add validation of this line
+					   
+					   
+					   wd.findElement(By.xpath(".//*[@id='section44'][contains(text(),'Assessments')]")).click();  //click of assessment button
+					   wd.findElement(By.xpath(".//*[@id='take_test_main']")).click(); // Take a test button
+					   Thread.sleep(2000);
+					   java.util.List<WebElement> NO_of_options =wd.findElements(By.xpath(".//img[@class='assement_radio']"));
+					   for (WebElement myValue2 : NO_of_options)                      // for loop for options of a question
+							{	
+					        	Thread.sleep(250);
+					        	myValue2.click();
+							}
+					   System.out.println("all option get selected atleast once");
+					   Thread.sleep(1000);
+					   java.util.List<WebElement> assessment_question =wd.findElements(By.xpath(".//li[contains(@class,'QueNav')]"));  // loop for numbers of question from a assessment
+					   int number = assessment_question.size();
+					    System.out.println("total numbers of questions in this assignemnt are = "+number);
+					    for (WebElement myValue : assessment_question)
+					    {
+					    	myValue.click();
+					    	Thread.sleep(250);
+					    }
+					   System.out.println("All questions navigation completed ");
+					   Thread.sleep(2000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click();
+					   Thread.sleep(1000);
+					   System.out.println("pause button  clicked");
+					   wd.findElement(By.xpath("//div[@class='modal-body']/button")).click();
+					   System.out.println("OK button clicked");
+					   Thread.sleep(1000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click(); 
+					   System.out.println("=====Mark as review test testing started========");
+					   wd.findElement(By.id("MarkReviewBtn")).click();
+					   System.out.println("mark as review button is clicked");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath(" .//*[@id='olQuestionNumber']/li[@questionindex='3']")).click();  //question 8 selected
+					   System.out.println("=====Mark as review test testing completed========");
+					  // System.out.println("Write code for mark as review color verification");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Submit')]")).click();
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
+		               Thread.sleep(500);
+					  wd.findElement(By.xpath("//span[contains(text(),'Done')]")).click();
+					  
+					   System.out.println("good boy assessment testing  of this chapter is completed");
+					   System.out.println("");
+					   System.out.println("");
+				       Thread.sleep(500);
+				       wd.findElement(By.xpath("//*[@id='drpchapters']")).click();
+				
+		        
+		    }
+		        System.out.println("Assessment test completed");
+		}
+	
+	@Test(priority=2)
+	public void EightMathamatics() throws Exception
+	
+	{
+		wd= browserfactory.StartBrowser("chrome", "https://geneo.in/geneo_live/student_login.aspx");
+		Login_page login =new Login_page(wd);
+		login.LoginToGeneo("etegatul@gmail.com", "Geneo@123");
+	     loginToTextPage textpage = new loginToTextPage(wd);
+	     textpage.select_std_sub(8, "MATHAMATICS");
+	     
+		        Thread.sleep(5000);
+		        wd.findElement(By.xpath("//*[@id='drpchapters']")).click();  //text page chapter index
+		    //wd.findElement(By.xpath(".//*[@id='drpchapters'][contains(text(),'Science')]")).click();
+		   java.util.List<WebElement> chapter_list =wd.findElements(By.xpath(".//*[@class='LoadChpater']"));
+		    int no = chapter_list.size();
+		    System.out.println("total numbers of chapters = "+no);
+		    System.out.println("");
+	        System.out.println("");
+		    for (WebElement myValue1 : chapter_list)                      // for loop for chapters click event from text page chapters index
+		    {
+		       
+		    		
+					System.out.println("chapter name = "+myValue1.getText());
+					Thread.sleep(250);
+					String ss= myValue1.getText();
+		    		if(ss.contains("01")||ss.contains("11"))
+		    		{
+		    			System.out.println("NO assessment available for this chapter");
+		    			continue;
+		    		}
+					myValue1.click();
+					for(int t=0;t<4;t++)   //for right arrow click event of right panel
+					   {
+						   wd.findElement(By.cssSelector("#rightArrow")).click();
+					   }
+					   System.out.println("Assessment tab displayed"); // add validation of this line
+					   
+					   
+					   wd.findElement(By.xpath(".//*[@id='section44'][contains(text(),'Assessments')]")).click();  //click of assessment button
+					   wd.findElement(By.xpath(".//*[@id='take_test_main']")).click(); // Take a test button
+					   Thread.sleep(2000);
+					   java.util.List<WebElement> NO_of_options =wd.findElements(By.xpath(".//img[@class='assement_radio']"));
+					   for (WebElement myValue2 : NO_of_options)                      // for loop for options of a question
+							{	
+					        	Thread.sleep(250);
+					        	myValue2.click();
+							}
+					   System.out.println("all option get selected atleast once");
+					   Thread.sleep(1000);
+					   java.util.List<WebElement> assessment_question =wd.findElements(By.xpath(".//li[contains(@class,'QueNav')]"));  // loop for numbers of question from a assessment
+					   int number = assessment_question.size();
+					    System.out.println("total numbers of questions in this assignemnt are = "+number);
+					    for (WebElement myValue : assessment_question)
+					    {
+					    	myValue.click();
+					    	Thread.sleep(250);
+					    }
+					   System.out.println("All questions navigation completed ");
+					   Thread.sleep(2000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click();
+					   Thread.sleep(1000);
+					   System.out.println("pause button  clicked");
+					   wd.findElement(By.xpath("//div[@class='modal-body']/button")).click();
+					   System.out.println("OK button clicked");
+					   Thread.sleep(1000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click(); 
+					   System.out.println("=====Mark as review test testing started========");
+					   wd.findElement(By.id("MarkReviewBtn")).click();
+					   System.out.println("mark as review button is clicked");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath(" .//*[@id='olQuestionNumber']/li[@questionindex='3']")).click();  //question 8 selected
+					   System.out.println("=====Mark as review test testing completed========");
+					  // System.out.println("Write code for mark as review color verification");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Submit')]")).click();
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
+		               Thread.sleep(500);
+					  wd.findElement(By.xpath("//span[contains(text(),'Done')]")).click();
+					  
+					   System.out.println("good boy assessment testing  of this chapter is completed");
+					   System.out.println("");
+					   System.out.println("");
+				       Thread.sleep(500);
+				       wd.findElement(By.xpath("//*[@id='drpchapters']")).click();
+				
+		        
+		    }
+		        System.out.println("Assessment test completed");
+		}
+	
+	@Test(priority=3)
+	public void NineScience() throws Exception
+	
+	{
+		wd= browserfactory.StartBrowser("chrome", "https://geneo.in/geneo_live/student_login.aspx");
+		Login_page login =new Login_page(wd);
+		login.LoginToGeneo("etegatul@gmail.com", "Geneo@123");
+	     loginToTextPage textpage = new loginToTextPage(wd);
+	     textpage.select_std_sub(9, "SCIENCE");
+	     
+		        Thread.sleep(5000);
+		        wd.findElement(By.xpath("//*[@id='drpchapters']")).click();  //text page chapter index
+		    //wd.findElement(By.xpath(".//*[@id='drpchapters'][contains(text(),'Science')]")).click();
+		   java.util.List<WebElement> chapter_list =wd.findElements(By.xpath(".//*[@class='LoadChpater']"));
+		    int no = chapter_list.size();
+		    System.out.println("total numbers of chapters = "+no);
+		    System.out.println("");
+	        System.out.println("");
+		    for (WebElement myValue1 : chapter_list)                      // for loop for chapters click event from text page chapters index
+		    {
+		       
+					System.out.println("chapter name = "+myValue1.getText());
+					Thread.sleep(250);
+					myValue1.click();
+					for(int t=0;t<4;t++)   //for right arrow click event of right panel
+					   {
+						   wd.findElement(By.cssSelector("#rightArrow")).click();
+					   }
+					   System.out.println("Assessment tab displayed"); // add validation of this line
+					   
+					   
+					   wd.findElement(By.xpath(".//*[@id='section44'][contains(text(),'Assessments')]")).click();  //click of assessment button
+					   wd.findElement(By.xpath(".//*[@id='take_test_main']")).click(); // Take a test button
+					   Thread.sleep(2000);
+					   java.util.List<WebElement> NO_of_options =wd.findElements(By.xpath(".//img[@class='assement_radio']"));
+					   for (WebElement myValue2 : NO_of_options)                      // for loop for options of a question
+							{	
+					        	Thread.sleep(250);
+					        	myValue2.click();
+							}
+					   System.out.println("all option get selected atleast once");
+					   Thread.sleep(1000);
+					   java.util.List<WebElement> assessment_question =wd.findElements(By.xpath(".//li[contains(@class,'QueNav')]"));  // loop for numbers of question from a assessment
+					   int number = assessment_question.size();
+					    System.out.println("total numbers of questions in this assignemnt are = "+number);
+					    for (WebElement myValue : assessment_question)
+					    {
+					    	myValue.click();
+					    	Thread.sleep(250);
+					    }
+					   System.out.println("All questions navigation completed ");
+					   Thread.sleep(2000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click();
+					   Thread.sleep(1000);
+					   System.out.println("pause button  clicked");
+					   wd.findElement(By.xpath("//div[@class='modal-body']/button")).click();
+					   System.out.println("OK button clicked");
+					   Thread.sleep(1000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click(); 
+					   System.out.println("=====Mark as review test testing started========");
+					   wd.findElement(By.id("MarkReviewBtn")).click();
+					   System.out.println("mark as review button is clicked");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath(" .//*[@id='olQuestionNumber']/li[@questionindex='3']")).click();  //question 8 selected
+					   System.out.println("=====Mark as review test testing completed========");
+					  // System.out.println("Write code for mark as review color verification");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Submit')]")).click();
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
+		               Thread.sleep(500);
+					  wd.findElement(By.xpath("//span[contains(text(),'Done')]")).click();
+					  
+					   System.out.println("good boy assessment testing  of this chapter is completed");
+					   System.out.println("");
+					   System.out.println("");
+				       Thread.sleep(500);
+				       wd.findElement(By.xpath("//*[@id='drpchapters']")).click();
+				
+		        
+		    }
+		        System.out.println("Assessment test completed");
+		}
+	
+	@Test(priority=4)
+	public void NineMathamatics() throws Exception
+	
+	{
+		wd= browserfactory.StartBrowser("chrome", "https://geneo.in/geneo_live/student_login.aspx");
+		Login_page login =new Login_page(wd);
+		login.LoginToGeneo("etegatul@gmail.com", "Geneo@123");
+	     loginToTextPage textpage = new loginToTextPage(wd);
+	     textpage.select_std_sub(9, "MATHAMATICS");
+	     
+		        Thread.sleep(5000);
+		        wd.findElement(By.xpath("//*[@id='drpchapters']")).click();  //text page chapter index
+		    //wd.findElement(By.xpath(".//*[@id='drpchapters'][contains(text(),'Science')]")).click();
+		   java.util.List<WebElement> chapter_list =wd.findElements(By.xpath(".//*[@class='LoadChpater']"));
+		    int no = chapter_list.size();
+		    System.out.println("total numbers of chapters = "+no);
+		    System.out.println("");
+	        System.out.println("");
+		    for (WebElement myValue1 : chapter_list)                      // for loop for chapters click event from text page chapters index
+		    {
+		       
+					System.out.println("chapter name = "+myValue1.getText());
+					Thread.sleep(250);
+					String ss= myValue1.getText();
+		    		if(ss.contains("11"))
+		    		{
+		    			System.out.println("NO assessment available for this chapter/n");
+		    			continue;
+		    		}
+					
+					myValue1.click();
+					for(int t=0;t<4;t++)   //for right arrow click event of right panel
+					   {
+						   wd.findElement(By.cssSelector("#rightArrow")).click();
+					   }
+					   System.out.println("Assessment tab displayed"); // add validation of this line
+					   
+					   
+					   wd.findElement(By.xpath(".//*[@id='section44'][contains(text(),'Assessments')]")).click();  //click of assessment button
+					   wd.findElement(By.xpath(".//*[@id='take_test_main']")).click(); // Take a test button
+					   Thread.sleep(2000);
+					   java.util.List<WebElement> NO_of_options =wd.findElements(By.xpath(".//img[@class='assement_radio']"));
+					   for (WebElement myValue2 : NO_of_options)                      // for loop for options of a question
+							{	
+					        	Thread.sleep(250);
+					        	myValue2.click();
+							}
+					   System.out.println("all option get selected atleast once");
+					   Thread.sleep(1000);
+					   java.util.List<WebElement> assessment_question =wd.findElements(By.xpath(".//li[contains(@class,'QueNav')]"));  // loop for numbers of question from a assessment
+					   int number = assessment_question.size();
+					    System.out.println("total numbers of questions in this assignemnt are = "+number);
+					    for (WebElement myValue : assessment_question)
+					    {
+					    	myValue.click();
+					    	Thread.sleep(250);
+					    }
+					   System.out.println("All questions navigation completed ");
+					   Thread.sleep(2000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click();
+					   Thread.sleep(1000);
+					   System.out.println("pause button  clicked");
+					   wd.findElement(By.xpath("//div[@class='modal-body']/button")).click();
+					   System.out.println("OK button clicked");
+					   Thread.sleep(1000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click(); 
+					   System.out.println("=====Mark as review test testing started========");
+					   wd.findElement(By.id("MarkReviewBtn")).click();
+					   System.out.println("mark as review button is clicked");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath(" .//*[@id='olQuestionNumber']/li[@questionindex='3']")).click();  //question 8 selected
+					   System.out.println("=====Mark as review test testing completed========");
+					  // System.out.println("Write code for mark as review color verification");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Submit')]")).click();
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
+		               Thread.sleep(500);
+					  wd.findElement(By.xpath("//span[contains(text(),'Done')]")).click();
+					  
+					   System.out.println("good boy assessment testing  of this chapter is completed");
+					   System.out.println("");
+					   System.out.println("");
+				       Thread.sleep(500);
+				       wd.findElement(By.xpath("//*[@id='drpchapters']")).click();
+				
+		        
+		    }
+		        System.out.println("Assessment test completed");
+		}
+	@Test(priority=5)
+	public void TenthhScience() throws Exception
+	
+	{
+		wd= browserfactory.StartBrowser("chrome", "https://geneo.in/geneo_live/student_login.aspx");
+		Login_page login =new Login_page(wd);
+		login.LoginToGeneo("etegatul@gmail.com", "Geneo@123");
+	     loginToTextPage textpage = new loginToTextPage(wd);
+	     textpage.select_std_sub(10, "SCIENCE");
+	     
+		        Thread.sleep(5000);
+		        wd.findElement(By.xpath("//*[@id='drpchapters']")).click();  //text page chapter index
+		    //wd.findElement(By.xpath(".//*[@id='drpchapters'][contains(text(),'Science')]")).click();
+		   java.util.List<WebElement> chapter_list =wd.findElements(By.xpath(".//*[@class='LoadChpater']"));
+		    int no = chapter_list.size();
+		    System.out.println("total numbers of chapters = "+no);
+		    System.out.println("");
+	        System.out.println("");
+		    for (WebElement myValue1 : chapter_list)                      // for loop for chapters click event from text page chapters index
+		    {
+		       
+					System.out.println("chapter name = "+myValue1.getText());
+					Thread.sleep(250);
+					myValue1.click();
+					for(int t=0;t<4;t++)   //for right arrow click event of right panel
+					   {
+						   wd.findElement(By.cssSelector("#rightArrow")).click();
+					   }
+					   System.out.println("Assessment tab displayed"); // add validation of this line
+					   
+					   
+					   wd.findElement(By.xpath(".//*[@id='section44'][contains(text(),'Assessments')]")).click();  //click of assessment button
+					   wd.findElement(By.xpath(".//*[@id='take_test_main']")).click(); // Take a test button
+					   Thread.sleep(2000);
+					   java.util.List<WebElement> NO_of_options =wd.findElements(By.xpath(".//img[@class='assement_radio']"));
+					   for (WebElement myValue2 : NO_of_options)                      // for loop for options of a question
+							{	
+					        	Thread.sleep(250);
+					        	myValue2.click();
+							}
+					   System.out.println("all option get selected atleast once");
+					   Thread.sleep(1000);
+					   java.util.List<WebElement> assessment_question =wd.findElements(By.xpath(".//li[contains(@class,'QueNav')]"));  // loop for numbers of question from a assessment
+					   int number = assessment_question.size();
+					    System.out.println("total numbers of questions in this assignemnt are = "+number);
+					    for (WebElement myValue : assessment_question)
+					    {
+					    	myValue.click();
+					    	Thread.sleep(250);
+					    }
+					   System.out.println("All questions navigation completed ");
+					   Thread.sleep(2000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click();
+					   Thread.sleep(1000);
+					   System.out.println("pause button  clicked");
+					   wd.findElement(By.xpath("//div[@class='modal-body']/button")).click();
+					   System.out.println("OK button clicked");
+					   Thread.sleep(1000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click(); 
+					   System.out.println("=====Mark as review test testing started========");
+					   wd.findElement(By.id("MarkReviewBtn")).click();
+					   System.out.println("mark as review button is clicked");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath(" .//*[@id='olQuestionNumber']/li[@questionindex='3']")).click();  //question 8 selected
+					   System.out.println("=====Mark as review test testing completed========");
+					  // System.out.println("Write code for mark as review color verification");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Submit')]")).click();
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
+		               Thread.sleep(500);
+					  wd.findElement(By.xpath("//span[contains(text(),'Done')]")).click();
+					  
+					   System.out.println("good boy assessment testing  of this chapter is completed");
+					   System.out.println("");
+					   System.out.println("");
+				       Thread.sleep(500);
+				       wd.findElement(By.xpath("//*[@id='drpchapters']")).click();
+				
+		        
+		    }
+		        System.out.println("Assessment test completed");
+		}
+	
+	@Test(priority=0)
+	public void tenthMathamatics() throws Exception
+	
+	{
+		wd= browserfactory.StartBrowser("chrome", "https://geneo.in/geneo_live/student_login.aspx");
+		Login_page login =new Login_page(wd);
+		login.LoginToGeneo("etegatul@gmail.com", "Geneo@123");
+	     loginToTextPage textpage = new loginToTextPage(wd);
+	     textpage.select_std_sub(10, "MATHAMATICS");
+	     
+		        Thread.sleep(5000);
+		        wd.findElement(By.xpath("//*[@id='drpchapters']")).click();  //text page chapter index
+		    //wd.findElement(By.xpath(".//*[@id='drpchapters'][contains(text(),'Science')]")).click();
+		   java.util.List<WebElement> chapter_list =wd.findElements(By.xpath(".//*[@class='LoadChpater']"));
+		    int no = chapter_list.size();
+		    System.out.println("total numbers of chapters = "+no);
+		    System.out.println("");
+	        System.out.println("");
+		    for (WebElement myValue1 : chapter_list)                      // for loop for chapters click event from text page chapters index
+		    {
+		       
+					System.out.println("chapter name = "+myValue1.getText());
+					Thread.sleep(250);
+					String ss= myValue1.getText();
+		    		if(ss.contains("11"))
+		    		{
+		    			System.out.println("NO assessment available for this chapter/n");
+		    			continue;
+		    		}
+					
+					myValue1.click();
+					for(int t=0;t<4;t++)   //for right arrow click event of right panel
+					   {
+						   wd.findElement(By.cssSelector("#rightArrow")).click();
+					   }
+					   System.out.println("Assessment tab displayed"); // add validation of this line
+					   
+					   
+					   wd.findElement(By.xpath(".//*[@id='section44'][contains(text(),'Assessments')]")).click();  //click of assessment button
+					   wd.findElement(By.xpath(".//*[@id='take_test_main']")).click(); // Take a test button
+					   Thread.sleep(2000);
+					   java.util.List<WebElement> NO_of_options =wd.findElements(By.xpath(".//img[@class='assement_radio']"));
+					   for (WebElement myValue2 : NO_of_options)                      // for loop for options of a question
+							{	
+					        	Thread.sleep(250);
+					        	myValue2.click();
+							}
+					   System.out.println("all option get selected atleast once");
+					   Thread.sleep(1000);
+					   java.util.List<WebElement> assessment_question =wd.findElements(By.xpath(".//li[contains(@class,'QueNav')]"));  // loop for numbers of question from a assessment
+					   int number = assessment_question.size();
+					    System.out.println("total numbers of questions in this assignemnt are = "+number);
+					    for (WebElement myValue : assessment_question)
+					    {
+					    	myValue.click();
+					    	Thread.sleep(250);
+					    }
+					   System.out.println("All questions navigation completed ");
+					   Thread.sleep(2000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click();
+					   Thread.sleep(1000);
+					   System.out.println("pause button  clicked");
+					   wd.findElement(By.xpath("//div[@class='modal-body']/button")).click();
+					   System.out.println("OK button clicked");
+					   Thread.sleep(1000);
+					   wd.findElement(By.xpath("//div[@id='pause_btn']")).click(); 
+					   System.out.println("=====Mark as review test testing started========");
+					   wd.findElement(By.id("MarkReviewBtn")).click();
+					   System.out.println("mark as review button is clicked");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath(" .//*[@id='olQuestionNumber']/li[@questionindex='3']")).click();  //question 8 selected
+					   System.out.println("=====Mark as review test testing completed========");
+					  // System.out.println("Write code for mark as review color verification");
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Submit')]")).click();
+					   Thread.sleep(500);
+					   wd.findElement(By.xpath("//span[contains(text(),'Yes')]")).click();
+		               Thread.sleep(500);
+					  wd.findElement(By.xpath("//span[contains(text(),'Done')]")).click();
+					  
+					   System.out.println("good boy assessment testing  of this chapter is completed");
+					   System.out.println("");
+					   System.out.println("");
+				       Thread.sleep(500);
+				       wd.findElement(By.xpath("//*[@id='drpchapters']")).click();
+				
+		        
+		    }
+		        System.out.println("Assessment test completed");
+		}
+	
+	@AfterMethod
+	public void TearDown(ITestResult result) throws Exception
+	{
+		
+		if(ITestResult.FAILURE==result.getStatus())
+		{	
+			Utility.capturescreenshots(wd, result.getName());
+			Utility.Current_Date_Time();
+		}
+		
+		wd.close();
+	}
+	
+	
+	
+	
+	
+	
+	}

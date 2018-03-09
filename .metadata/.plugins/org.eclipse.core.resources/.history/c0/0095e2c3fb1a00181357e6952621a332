@@ -1,0 +1,10 @@
+package library;
+
+public class Current_Date_Time {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

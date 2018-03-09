@@ -1,0 +1,90 @@
+package student;
+
+import static org.testng.Assert.assertEquals;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class ExternalUrlStatus 
+
+{
+	
+		
+	@Test
+	public void GeneoStudentURL() throws InterruptedException
+	{
+		System.out.println("GeneoStudentURL testing\n");
+		System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+		WebDriver wd = new ChromeDriver();
+		wd.get("https://geneo.in/geneo_live/student_login.aspx");
+		Thread.sleep(1000);
+		String title = wd.getTitle();
+		System.out.println(title);
+		Thread.sleep(7000);
+		//String title = "Atul";   //negative testing dummy
+//		Assert.assertEquals("Geneo Student Login", title," GeneoStudentURL Test failed");
+//		System.out.println("URL : student.geneo.in is working fine.\n");
+		//String title = "Geneo Student Login";
+		if(title == "Geneo Student Login")
+		{
+			System.out.println("URL : Student.geneo.in is working fine.\n");
+		}
+		else
+		{
+			System.out.println("URL : Student.geneo.in is NOT WORKING.......\n");
+			Assert.assertEquals("12", "13"); // added just to make method fail
+			
+    	}
+	
+	}
+	
+	//@Test
+	public void GeneoURL() throws InterruptedException
+	{
+		System.out.println("GeneoURL testing\n");
+		System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+		WebDriver wd = new ChromeDriver();
+		wd.get("https://geneo.in");
+		Thread.sleep(1000);
+		String title = wd.getTitle();
+		//String title = "Atul";   //negative testing dummy
+		//Assert.assertEquals("Geneo", title," GeneoURL Test failed");
+		//System.out.println("URL : https://geneo.in is working fine.\n");
+		if("Geneo"==title)
+		{
+			System.out.println("URL : https://geneo.in is working fine.\n");
+		}
+		else
+		{
+			System.out.println("URL : https://geneo.in is NOT WORKING.......\n");
+			Assert.assertEquals("12", "13");// added just to make method fail
+			
+		}
+	}
+	//@Test
+	public void ExplorimentsURL() throws InterruptedException
+	{
+		System.out.println("Exploriments testing\n");
+		System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+		WebDriver wd = new ChromeDriver();
+		wd.get("https://exploriments.com/");
+		Thread.sleep(1000);
+		String title = wd.getTitle();
+		//String title = "Atul";   //negative testing dummy
+	//Assert.assertEquals("Exploriments", title," Exploriments Test failed");
+	//System.out.println("URL : https://exploriments.com is working fine.\n");
+		if("Exploriments"==title)
+		{
+			System.out.println("URL : https://exploriments.com is working fine.\n");
+		}
+		else
+		{
+			System.out.println("URL : https://exploriments.com is NOT WORKING......\n");
+			Assert.assertEquals("12", "13");  // added just to make method fail
+			
+		}
+	}
+	
+}

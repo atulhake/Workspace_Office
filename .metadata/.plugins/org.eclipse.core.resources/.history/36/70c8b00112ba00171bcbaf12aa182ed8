@@ -1,0 +1,10 @@
+package student;
+
+public class index_click_and_back {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

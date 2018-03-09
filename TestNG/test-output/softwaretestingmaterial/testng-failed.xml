@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [softwaretestingmaterial]" parallel="methods">
+  <test name="testngTest2(failed)" parallel="methods">
+    <classes>
+      <class name="signupcode.signUp_TestNG">
+        <methods>
+          <include name="ALl_blank"/>
+          <include name="OTP_testing"/>
+        </methods>
+      </class> <!-- signupcode.signUp_TestNG -->
+    </classes>
+  </test> <!-- testngTest2(failed) -->
+</suite> <!-- Failed suite [softwaretestingmaterial] -->
